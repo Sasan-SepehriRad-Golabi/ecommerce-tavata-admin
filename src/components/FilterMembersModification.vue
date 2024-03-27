@@ -119,8 +119,8 @@
                                             placeholder="واحد قیمت" hint="مثلا: هر کیلو، هر تن و ..."></v-text-field>
                                     </v-col>
                                     <v-col cols="6">
-                                        <v-text-field v-model="filterMemberPrice" type="number" placeholder="قیمت به تومان"
-                                            suffix="تومان"></v-text-field>
+                                        <v-text-field v-model="filterMemberPrice" @input="decorateNumber(filterMemberPrice)"
+                                            type="number" placeholder="قیمت به تومان" suffix="تومان"></v-text-field>
                                     </v-col>
                                 </v-row>
                                 <v-row v-else class="d-none d-md-flex justify-center align-center">
@@ -129,13 +129,17 @@
                                             placeholder="واحد قیمت" hint="مثلا: هر کیلو، هر تن و ..."></v-text-field>
                                     </v-col>
                                     <v-col cols="4">
-                                        <v-text-field v-model="filterMemberPrice" type="number"
-                                            placeholder="قیمت قبلی به تومان" suffix="تومان"></v-text-field>
+                                        <v-text-field @input="decorateNumber(filterMemberPrice)" v-model="filterMemberPrice"
+                                            placeholder="قیمت قبلی " suffix="تومان"></v-text-field>
                                     </v-col>
                                     <v-col cols="4">
-                                        <v-text-field v-model="filterMemberPrice" type="number"
-                                            placeholder="قیمت جدید به تومان" suffix="تومان"></v-text-field>
+                                        <v-text-field @input="decorateNumberDiscounted(filterMemberPriceDiscounted)"
+                                            v-model="filterMemberPriceDiscounted" placeholder="قیمت جدید "
+                                            suffix="تومان"></v-text-field>
                                     </v-col>
+                                    <v-col cols="12"><v-card-subtitle>انتخاب زمان پایان تخفیف</v-card-subtitle></v-col>
+                                    <v-col cols="12"><date-picker @click="shwTotalTime()" v-model="endOfDiscountDate" simple
+                                            type="datetime"></date-picker></v-col>
                                 </v-row>
                                 <v-row v-if="!isDiscounted" class="d-flex d-md-none justify-center align-center">
                                     <v-col cols="12">
@@ -143,7 +147,7 @@
                                             placeholder="واحد قیمت" hint="مثلا: هر کیلو، هر تن و ..."></v-text-field>
                                     </v-col>
                                     <v-col cols="12">
-                                        <v-text-field @input="decorateNumber" v-model="filterMemberPrice"
+                                        <v-text-field @input="decorateNumber(filterMemberPrice)" v-model="filterMemberPrice"
                                             placeholder="قیمت به تومان" suffix="تومان"></v-text-field>
                                     </v-col>
                                 </v-row>
@@ -153,11 +157,11 @@
                                             placeholder="واحد قیمت" hint="مثلا: هر کیلو، هر تن و ..."></v-text-field>
                                     </v-col>
                                     <v-col cols="12">
-                                        <v-text-field @input="decorateNumber" v-model="filterMemberPrice"
+                                        <v-text-field @input="decorateNumber(filterMemberPrice)" v-model="filterMemberPrice"
                                             placeholder="قیمت قبلی " suffix="تومان"></v-text-field>
                                     </v-col>
                                     <v-col cols="12">
-                                        <v-text-field @input="decorateNumberDiscounted"
+                                        <v-text-field @input="decorateNumberDiscounted(filterMemberPriceDiscounted)"
                                             v-model="filterMemberPriceDiscounted" placeholder="قیمت جدید "
                                             suffix="تومان"></v-text-field>
                                     </v-col>

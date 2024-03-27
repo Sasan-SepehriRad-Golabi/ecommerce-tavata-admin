@@ -322,7 +322,7 @@ export default {
         }
     },
     computed: {
-        aph() { useMainStore().aph }
+        aph() { return useMainStore().aph }
     },
     created() {
         this.getCarouselImages();
@@ -590,9 +590,13 @@ export default {
                         })
                         // console.log(this.middleHintImage)
                         this.blurAmount = [];
-                        for (let i = 0; i < this.carouselImages.length; i++) {
-                            this.blurAmount.push(0);
-                        }
+                        this.blurAmount = this.carouselImages.map((item, index) => {
+                            return item.mainBlurAmount ? item.mainBlurAmount : 0;
+                        })
+                        // this.blurAmount = [];
+                        // for (let i = 0; i < this.carouselImages.length; i++) {
+                        //     this.blurAmount.push(0);
+                        // }
                         this.middleHintImageFile = [];
                         for (let i = 0; i < this.carouselImages.length; i++) {
                             this.middleHintImageFile.push(0);

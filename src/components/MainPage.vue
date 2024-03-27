@@ -136,9 +136,13 @@ export default {
                             }
                         })
                         this.blurAmount = [];
-                        for (let i = 0; i < this.carouselImages.length; i++) {
-                            this.blurAmount.push(0);
-                        }
+                        this.blurAmount = this.carouselImages.map((item, index) => {
+                            return item.mainBlurAmount ? item.mainBlurAmount : 0;
+                        })
+                        // this.blurAmount = [];
+                        // for (let i = 0; i < this.carouselImages.length; i++) {
+                        //     this.blurAmount.push(0);
+                        // }
                         useMainStore().mps = false;
                         useMainStore().mpv = 0;
                         useMainStore().al = { alC: "success", alT: "توجه", alt: "تصاویر اسلاید به روزرسانی شدند" }

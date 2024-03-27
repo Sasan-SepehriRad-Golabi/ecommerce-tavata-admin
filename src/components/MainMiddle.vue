@@ -755,11 +755,11 @@ export default {
         },
         modifyMemmbersOfFilter(selectedFilterId) {
             // console.log(selectedFilterId)
-            this.$router.replace(`/iltermembers/${this.defaultSelectedFilter}`)
+            this.$router.replace(`filtermembers/${this.defaultSelectedFilter}`)
         },
         deleteMemmbersOfFilter(selectedFilterID) {
             useMainStore().mps = true;
-            PostData_normal("/@dm1n/rf", { id: selectedFilterID }, {
+            PostData_normal("@dm1n/rf", { id: selectedFilterID }, {
                 onUploadProgress: (progressEvent) => {
                     useMainStore().mpv = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                 }
